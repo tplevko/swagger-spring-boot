@@ -22,3 +22,15 @@ To run:
 ```
 java -jar target/swagger-spring-boot-sample-1.0.0-SNAPSHOT.jar
 ```
+
+To create image in oc:
+
+```
+mvn package -P image
+```
+
+To create a docker image in dockerhub:
+```
+docker image build build/ -t syndesisqe/swagger-spring-boot
+docker push syndesisqe/swagger-spring-boot
+```
