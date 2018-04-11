@@ -15,7 +15,7 @@
 		<junit-version>4.8.1</junit-version>
 		<spring-boot-version>1.4.0.RELEASE</spring-boot-version>
 		<springfox-version>2.5.0</springfox-version>
-		<swagger-core-version>1.5.10</swagger-core-version>
+		<swagger-version>1.5.18</swagger-version>
 		<spring-version>4.3.2.RELEASE</spring-version>
 		<hibernate-validator-version>5.2.4.Final</hibernate-validator-version>
 	</properties>
@@ -44,12 +44,17 @@
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-core</artifactId>
-			<version>${swagger-core-version}</version>
+			<version>${swagger-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-jersey-jaxrs</artifactId>
+			<version>${swagger-version}</version>
 		</dependency>
 	</dependencies>
 

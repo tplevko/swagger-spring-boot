@@ -1,15 +1,15 @@
 package io.swagger.sample.models;
 
 import io.swagger.annotations.ApiModelProperty;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
-import java.util.List;
 
 @XmlRootElement(name = "Pet")
 public class Pet {
+
     private long id;
     private Category category;
     private String name;

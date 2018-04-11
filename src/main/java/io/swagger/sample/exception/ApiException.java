@@ -13,13 +13,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package io.swagger.sample.exception;
 
-public class ApiException extends Exception{
-  private int code;
-  public ApiException (int code, String msg) {
-    super(msg);
-    this.code = code;
-  }
+public class ApiException extends Exception {
+
+    private int code;
+
+    public ApiException(int code, String msg) {
+        super(msg);
+        this.code = code;
+    }
 }

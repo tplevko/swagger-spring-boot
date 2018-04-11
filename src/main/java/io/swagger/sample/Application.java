@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.base.Predicates;
 import io.swagger.sample.resource.PetResource;
-import io.swagger.sample.resource.StoreResource;
 import io.swagger.sample.utils.SimpleCORSFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,7 +26,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @ComponentScan(basePackageClasses = {
     PetResource.class,
-    StoreResource.class,
     SimpleCORSFilter.class
 })
 public class Application {

@@ -13,13 +13,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package io.swagger.sample.exception;
 
 public class NotFoundException extends ApiException {
-  private int code;
-  public NotFoundException (int code, String msg) {
-    super(404, msg);
-    this.code = code;
-  }
+
+    private int code;
+
+    public NotFoundException(int code, String msg) {
+        super(404, msg);
+        this.code = code;
+    }
 }

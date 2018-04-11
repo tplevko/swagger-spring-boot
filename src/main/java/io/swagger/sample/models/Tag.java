@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Tag")
 public class Tag {
+
     private long id;
     private String name;
 

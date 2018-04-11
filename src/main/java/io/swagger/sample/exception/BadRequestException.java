@@ -13,13 +13,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package io.swagger.sample.exception;
 
 public class BadRequestException extends ApiException {
-  private int code;
-  public BadRequestException (int code, String msg) {
-    super(code, msg);
-    this.code = code;
-  }
+
+    private int code;
+
+    public BadRequestException(int code, String msg) {
+        super(code, msg);
+        this.code = code;
+    }
 }
