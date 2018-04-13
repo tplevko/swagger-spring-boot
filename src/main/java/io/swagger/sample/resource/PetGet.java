@@ -5,27 +5,40 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.sample.data.PetData;
+import io.swagger.sample.exception.NotFoundException;
 import io.swagger.sample.models.Pet;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "pets")
+@Slf4j
 public class PetGet extends AbstractResource {
 
+    @ApiOperation(notes = "gets pet by id.", value = "get pet by ID", nickname = "getPet",
+        tags = {"Pet"})
     @ApiResponses({
         @ApiResponse(code = 200, message = "Nice!"),
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @PostMapping(value = "/newPet", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
-    @ApiOperation(notes = "Creates a new Pet.", value = "Create a new pet, returns it's ID", nickname = "createNewPet")
-    public String newPet(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
-        @RequestBody io.swagger.sample.models.Pet pet) {
-        Pet newPet = PetData.addPet(pet);
-        return String.valueOf(newPet.getId());
+    @GetMapping(value = "/pet/{id}", produces = {MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Pet> getPetById(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
+        @PathVariable("id") Integer petId) throws Exception {
+        Pet pet = PetData.getPetById(petId);
+        if (pet != null) {
+            log.info("**** get ****");
+            log.info("pet name: {}", pet.getName());
+            log.info("pet id: {}", pet.getId());
+            log.info("*************");
+            return ResponseEntity.ok().body(pet);
+        } else {
+            throw new NotFoundException(io.swagger.sample.models.ApiResponse.ERROR, "Pet " + petId + " not found");
+        }
     }
 }

@@ -1,9 +1,5 @@
 package io.swagger.sample.models;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
  * Copyright 2016 SmartBear Software
  *
@@ -16,13 +12,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Category {
 
-    long id;
-    String name;
+    @XmlElement(name = "id")
+    private long id;
+    @XmlElement(name = "name")
+    private String name;
 
     public Category() {
     }
