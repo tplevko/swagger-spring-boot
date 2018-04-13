@@ -8,6 +8,7 @@ import io.swagger.sample.data.PetData;
 import io.swagger.sample.models.Pet;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +26,13 @@ public class PetPost extends AbstractResource {
     })
     @PostMapping(value = "/newPet", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
     @ApiOperation(notes = "Creates a new Pet.", value = "Create a new pet, returns it's ID", nickname = "createNewPet")
-    public String newPet(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
+    public ResponseEntity<String> newPet(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
         @RequestBody io.swagger.sample.models.Pet pet) {
         Pet newPet = PetData.addPet(pet);
         log.info("**** new pet ****");
         log.info("pet name: {}", pet.getName());
         log.info("pet id: {}", pet.getId());
         log.info("******************");
-        return String.valueOf(newPet.getId());
+        return ResponseEntity.ok().body(String.valueOf(newPet.getId()));
     }
 }

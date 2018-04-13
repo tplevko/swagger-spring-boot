@@ -20,16 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class PetGet extends AbstractResource {
 
-    @ApiOperation(notes = "gets pet by id.", value = "get pet by ID", nickname = "getPet",
-        tags = {"Pet"})
     @ApiResponses({
         @ApiResponse(code = 200, message = "Nice!"),
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @GetMapping(value = "/pet/{id}", produces = {MediaType.APPLICATION_XML_VALUE})
+    @ApiOperation(notes = "gets pet by id.", value = "get pet by ID", nickname = "getPet",
+        tags = {"Pet"})
+    @GetMapping(value = "/pet/{petId}", produces = {MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Pet> getPetById(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
-        @PathVariable("id") Integer petId) throws Exception {
+        @PathVariable(value = "petId") Integer petId) throws Exception {
         Pet pet = PetData.getPetById(petId);
         if (pet != null) {
             log.info("**** get ****");
