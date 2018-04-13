@@ -56,7 +56,7 @@ public class PetData {
             "url1", "url2"}, new String[]{"tag3", "tag4"}, "available"));
     }
 
-    public Pet getPetById(long petId) {
+    public static Pet getPetById(long petId) {
         for (Pet pet : pets) {
             if (pet.getId() == petId) {
                 return pet;
@@ -65,7 +65,7 @@ public class PetData {
         return null;
     }
 
-    public boolean deletePet(long petId) {
+    public static boolean deletePet(long petId) {
         if (pets.size() > 0) {
             for (int i = pets.size() - 1; i >= 0; i--) {
                 Pet pet = pets.get(i);
@@ -78,7 +78,7 @@ public class PetData {
         return false;
     }
 
-    public List<Pet> findPetByStatus(String status) {
+    public static List<Pet> findPetByStatus(String status) {
         List<Pet> result = new java.util.ArrayList<Pet>();
         if (status == null) {
             return result;
@@ -94,7 +94,7 @@ public class PetData {
         return result;
     }
 
-    public List<Pet> findPetByTags(String tags) {
+    public static List<Pet> findPetByTags(String tags) {
         List<Pet> result = new java.util.ArrayList<Pet>();
 
         if (tags == null) {
@@ -115,7 +115,7 @@ public class PetData {
         return result;
     }
 
-    public Pet addPet(Pet pet) {
+    public static Pet addPet(Pet pet) {
         if (pet.getId() == 0) {
             long maxId = 0;
             for (int i = pets.size() - 1; i >= 0; i--) {
@@ -136,7 +136,7 @@ public class PetData {
         return pet;
     }
 
-    public Map<String, Integer> getInventoryByStatus() {
+    public static Map<String, Integer> getInventoryByStatus() {
         Map<String, Integer> output = new HashMap<String, Integer>();
         for (Pet pet : pets) {
             String status = pet.getStatus();
@@ -153,7 +153,7 @@ public class PetData {
         return output;
     }
 
-    static Pet createPet(long id, Category cat, String name, String[] urls,
+    private static Pet createPet(long id, Category cat, String name, String[] urls,
         String[] tags, String status) {
         Pet pet = new Pet();
         pet.setId(id);
@@ -182,7 +182,7 @@ public class PetData {
         return pet;
     }
 
-    static Category createCategory(long id, String name) {
+    private static Category createCategory(long id, String name) {
         Category category = new Category();
         category.setId(id);
         category.setName(name);

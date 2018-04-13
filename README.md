@@ -23,6 +23,9 @@ To run:
 java -jar target/swagger-spring-boot-sample-1.0.0-SNAPSHOT.jar
 ```
 
+on Java 9: 
+java  --add-modules java.xml.bind -jar target/swagger-spring-boot-sample-1.0.0-SNAPSHOT.jar
+
 To create image in oc:
 
 ```

@@ -1,23 +1,24 @@
 package io.swagger.sample.models;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "Pet")
+//@XmlRootElement(name = "Pet")
+//@ApiModel(value = "Pet", description = "Model description", reference = "reference")
+@XmlRootElement
 public class Pet {
 
     private long id;
+    @XmlElement(name = "category")
     private Category category;
     private String name;
     private List<String> photoUrls = new ArrayList<String>();
+    @XmlElement(name = "tag")
     private List<Tag> tags = new ArrayList<Tag>();
     private String status;
 
-    @XmlElement(name = "id")
     public long getId() {
         return id;
     }
@@ -26,7 +27,6 @@ public class Pet {
         this.id = id;
     }
 
-    @XmlElement(name = "category")
     public Category getCategory() {
         return category;
     }
@@ -35,7 +35,6 @@ public class Pet {
         this.category = category;
     }
 
-    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -44,8 +43,8 @@ public class Pet {
         this.name = name;
     }
 
-    @XmlElementWrapper(name = "photoUrls")
-    @XmlElement(name = "photoUrl")
+//    @XmlElementWrapper(name = "photoUrls")
+//    @XmlElement(name = "photoUrl")
     public List<String> getPhotoUrls() {
         return photoUrls;
     }
@@ -54,8 +53,8 @@ public class Pet {
         this.photoUrls = photoUrls;
     }
 
-    @XmlElementWrapper(name = "tags")
-    @XmlElement(name = "tag")
+//    @XmlElementWrapper(name = "tags")
+//    @XmlElement(name = "tag")
     public List<Tag> getTags() {
         return tags;
     }
@@ -64,8 +63,8 @@ public class Pet {
         this.tags = tags;
     }
 
-    @XmlElement(name = "status")
-    @ApiModelProperty(value = "pet status in the store", allowableValues = "available,pending,sold")
+//    @XmlElement(name = "status")
+//    @ApiModelProperty(value = "pet status in the store", allowableValues = "available,pending,sold")
     public String getStatus() {
         return status;
     }
