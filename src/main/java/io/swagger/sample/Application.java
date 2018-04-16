@@ -5,8 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.base.Predicates;
-import io.swagger.sample.resource.PetGet;
-import io.swagger.sample.resource.PetPost;
+import io.swagger.sample.resource.PetGetJson;
+import io.swagger.sample.resource.PetGetXml;
+import io.swagger.sample.resource.PetPostJson;
+import io.swagger.sample.resource.PetPostXml;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -24,8 +26,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @ComponentScan(basePackageClasses = {
-    PetGet.class,
-    PetPost.class
+    PetGetXml.class,
+    PetGetJson.class,
+    PetPostXml.class,
+    PetPostJson.class
 })
 public class Application {
 

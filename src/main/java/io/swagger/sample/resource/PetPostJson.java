@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "pets")
+@RequestMapping(value = "pets-json")
 @Slf4j
-public class PetPost {
+public class PetPostJson {
 
     @ApiResponses({
         @ApiResponse(code = 200, message = "Nice!"),
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @PostMapping(value = "/newPet", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
-    @ApiOperation(notes = "Creates a new Pet.", value = "Create a new pet, returns it's ID", nickname = "createNewPet")
+    @PostMapping(value = "/newPet", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+    @ApiOperation(notes = "Create a new pet, returns it's ID", value = "Create a new pet using JSON", nickname = "createNewPet")
     public ResponseEntity<String> newPet(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
         @RequestBody io.swagger.sample.models.Pet pet) {
         Pet newPet = PetData.addPet(pet);

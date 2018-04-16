@@ -17,16 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "pets")
+@RequestMapping(value = "pets-xml")
 @Slf4j
-public class PetGet {
+public class PetGetXml {
 
     @ApiResponses({
         @ApiResponse(code = 200, message = "Nice!"),
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @ApiOperation(notes = "gets pet by id.", value = "get pet by ID", nickname = "getPet",
+    @ApiOperation(notes = "Gets pet by id.", value = "get pet by ID", nickname = "getPet",
         tags = {"Pet"})
     @GetMapping(value = "/pet/{petId}", produces = {MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Pet> getPetById(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
@@ -48,7 +48,7 @@ public class PetGet {
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @ApiOperation(notes = "gets all pets.", value = "get all pets", nickname = "listAll",
+    @ApiOperation(notes = "Gets all pets.", value = "get all pets", nickname = "listAll",
         tags = {"Pet"})
     @GetMapping(value = "/listAll", produces = {MediaType.APPLICATION_XML_VALUE})
     public List<Pet> getPetById() {
