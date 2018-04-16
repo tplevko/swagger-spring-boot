@@ -26,7 +26,7 @@ public class PetGetXml {
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @ApiOperation(notes = "Gets pet by id.", value = "get pet by ID", nickname = "getPet",
+    @ApiOperation(notes = "Gets pet by id in XML format", value = "Get pet by ID in XML", nickname = "getPet",
         tags = {"Pet"})
     @GetMapping(value = "/pet/{petId}", produces = {MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Pet> getPetById(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
@@ -48,7 +48,7 @@ public class PetGetXml {
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @ApiOperation(notes = "Gets all pets.", value = "get all pets", nickname = "listAll",
+    @ApiOperation(notes = "Gets all pets in XML format", value = "Get all pets in XML", nickname = "listAll",
         tags = {"Pet"})
     @GetMapping(value = "/listAll", produces = {MediaType.APPLICATION_XML_VALUE})
     public List<Pet> getPetById() {

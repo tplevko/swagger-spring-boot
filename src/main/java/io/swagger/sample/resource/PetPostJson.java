@@ -26,8 +26,8 @@ public class PetPostJson {
     })
     @PostMapping(value = "/newPet", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
     @ApiOperation(notes = "Create a new pet, returns it's ID", value = "Create a new pet using JSON", nickname = "createNewPet")
-    public ResponseEntity<String> newPet(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
-        @RequestBody io.swagger.sample.models.Pet pet) {
+    public ResponseEntity<String> newPet(@ApiParam(value = "Pet which should be created", required = true)
+        @RequestBody(required = true) io.swagger.sample.models.Pet pet) {
         Pet newPet = PetData.addPet(pet);
         log.info("**** new pet ****");
         log.info("pet name: {}", pet.getName());

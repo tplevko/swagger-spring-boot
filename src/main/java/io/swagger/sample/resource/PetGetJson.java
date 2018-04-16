@@ -26,7 +26,7 @@ public class PetGetJson {
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @ApiOperation(notes = "gets pet by id.", value = "get pet by ID", nickname = "getPet",
+    @ApiOperation(notes = "Gets pet by id in JSON", value = "Get pet by ID in JSON", nickname = "getPet",
         tags = {"Pet"})
     @GetMapping(value = "/pet/{petId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Pet> getPetById(@ApiParam(value = "ID of pet that needs to be fetched", required = true)
@@ -48,7 +48,7 @@ public class PetGetJson {
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @ApiOperation(notes = "Gets all pets", value = "Get all pets, JSON", nickname = "listAll",
+    @ApiOperation(notes = "Gets all pets in JSON", value = "Get all pets, JSON", nickname = "listAll",
         tags = {"Pet"})
     @GetMapping(value = "/listAll", produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<Pet> getPetById() {
