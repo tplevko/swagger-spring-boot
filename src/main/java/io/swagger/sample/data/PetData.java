@@ -94,6 +94,10 @@ public class PetData {
         return result;
     }
 
+    public static List<Pet> getAllPets() {
+        return pets;
+    }
+
     public static List<Pet> findPetByTags(String tags) {
         List<Pet> result = new java.util.ArrayList<Pet>();
 

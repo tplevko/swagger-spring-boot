@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "pets")
 @Slf4j
-public class PetPost extends AbstractResource {
+public class PetPost {
 
     @ApiResponses({
         @ApiResponse(code = 200, message = "Nice!"),

@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.sample.data.PetData;
 import io.swagger.sample.exception.NotFoundException;
 import io.swagger.sample.models.Pet;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "pets")
 @Slf4j
-public class PetGet extends AbstractResource {
+public class PetGet {
 
     @ApiResponses({
         @ApiResponse(code = 200, message = "Nice!"),
@@ -40,5 +41,24 @@ public class PetGet extends AbstractResource {
         } else {
             throw new NotFoundException(io.swagger.sample.models.ApiResponse.ERROR, "Pet " + petId + " not found");
         }
+    }
+
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "Nice!"),
+        @ApiResponse(code = 400, message = "Invalid pet data supplied"),
+        @ApiResponse(code = 404, message = "Pet not created")
+    })
+    @ApiOperation(notes = "gets all pets.", value = "get all pets", nickname = "listAll",
+        tags = {"Pet"})
+    @GetMapping(value = "/listAll", produces = {MediaType.APPLICATION_XML_VALUE})
+    public List<Pet> getPetById() {
+        List<Pet> pets = PetData.getAllPets();
+        log.info("**** All pets ****");
+        for (Pet p : pets) {
+            log.info("pet name: {}", p.getName());
+            log.info("pet id: {}", p.getId());
+            log.info("*************");
+        }
+        return pets;
     }
 }
