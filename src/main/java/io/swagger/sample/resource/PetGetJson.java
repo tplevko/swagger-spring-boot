@@ -61,5 +61,4 @@ public class PetGetJson {
         }
         return pets;
     }
-//TODO(tplevko): add delete operation
 }

@@ -9,6 +9,7 @@ import io.swagger.sample.resource.PetGetJson;
 import io.swagger.sample.resource.PetGetXml;
 import io.swagger.sample.resource.PetPostJson;
 import io.swagger.sample.resource.PetPostXml;
+import io.swagger.sample.utils.LoggingTraceRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -29,7 +30,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
     PetGetXml.class,
     PetGetJson.class,
     PetPostXml.class,
-    PetPostJson.class
+    PetPostJson.class,
+//    CustomWebTraceFilter.class,
+    LoggingTraceRepository.class
 })
 public class Application {
 

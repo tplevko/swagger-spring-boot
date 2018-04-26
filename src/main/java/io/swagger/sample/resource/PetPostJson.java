@@ -24,14 +24,30 @@ public class PetPostJson {
         @ApiResponse(code = 400, message = "Invalid pet data supplied"),
         @ApiResponse(code = 404, message = "Pet not created")
     })
-    @PostMapping(value = "/newPet", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
-    @ApiOperation(notes = "Create a new pet, returns it's ID", value = "Create a new pet using JSON", nickname = "createNewPet")
-    public ResponseEntity<String> newPet(@ApiParam(value = "Pet which should be created", required = true)
-        @RequestBody(required = true) io.swagger.sample.models.Pet pet) {
-        Pet newPet = PetData.addPet(pet);
+    @PostMapping(value = "/newPet", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(notes = "Create a new pet, nothing returned", value = "Create a new pet using JSON, no return value", nickname = "createNewPet")
+    public void newPetNoResponse(@ApiParam(value = "Pet which should be created", required = true)
+        @RequestBody(required = true) io.swagger.sample.models.Pet body) {
+        Pet newPet = PetData.addPet(body);
         log.info("**** new pet ****");
-        log.info("pet name: {}", pet.getName());
-        log.info("pet id: {}", pet.getId());
+        log.info("pet name: {}", newPet.getName());
+        log.info("pet id: {}", newPet.getId());
+        log.info("******************");
+    }
+
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "Nice!"),
+        @ApiResponse(code = 400, message = "Invalid pet data supplied"),
+        @ApiResponse(code = 404, message = "Pet not created")
+    })
+    @PostMapping(value = "/newPet-return", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(notes = "Create a new pet, returns it's ID", value = "Create a new pet using JSON, return value - ID", nickname = "createNewPet")
+    public ResponseEntity<String> newPetResponse(@ApiParam(value = "Pet which should be created", required = true)
+        @RequestBody(required = true) io.swagger.sample.models.Pet body) {
+        Pet newPet = PetData.addPet(body);
+        log.info("**** new pet ****");
+        log.info("pet name: {}", newPet.getName());
+        log.info("pet id: {}", newPet.getId());
         log.info("******************");
         return ResponseEntity.ok().body(String.valueOf(newPet.getId()));
     }
