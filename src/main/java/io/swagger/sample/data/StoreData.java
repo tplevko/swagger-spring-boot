@@ -69,11 +69,11 @@ public class StoreData {
         return false;
     }
 
-    private static Order createOrder(long id, long petId, int quantity,
+    private static Order createOrder(long id, long contactId, int quantity,
         Date shipDate, String status) {
         Order order = new Order();
         order.setId(id);
-        order.setPetId(petId);
+        order.setContactId(contactId);
         order.setQuantity(quantity);
         order.setShipDate(shipDate);
         order.setStatus(status);

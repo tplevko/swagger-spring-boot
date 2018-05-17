@@ -5,11 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.base.Predicates;
-import io.swagger.sample.resource.PetGetJson;
-import io.swagger.sample.resource.PetGetXml;
-import io.swagger.sample.resource.PetPostJson;
-import io.swagger.sample.resource.PetPostXml;
-import io.swagger.sample.utils.LoggingTraceRepository;
+import io.swagger.sample.resource.ContactGetJson;
+import io.swagger.sample.resource.ContactGetXml;
+import io.swagger.sample.resource.ContactPostJson;
+import io.swagger.sample.resource.ContactPostXml;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -27,12 +26,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @ComponentScan(basePackageClasses = {
-    PetGetXml.class,
-    PetGetJson.class,
-    PetPostXml.class,
-    PetPostJson.class,
+    ContactGetXml.class,
+    ContactGetJson.class,
+    ContactPostXml.class,
+    ContactPostJson.class,
 //    CustomWebTraceFilter.class,
-    LoggingTraceRepository.class
+//    LoggingTraceRepository.class
 })
 public class Application {
 
@@ -65,7 +64,7 @@ public class Application {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("Springfox petstore API")
+            .title("Springfox customer API")
             .description("description")
             .license("Apache License Version 2.0")
             .licenseUrl("https://github.com/springfox/springfox/blob/master/LICENSE")

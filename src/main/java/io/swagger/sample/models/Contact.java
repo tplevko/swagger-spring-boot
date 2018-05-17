@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Pet {
+public class Contact {
 
     @XmlElement(name = "id")
     private long id;
@@ -26,7 +26,7 @@ public class Pet {
     @XmlElement(name = "tag")
     private List<Tag> tags = new ArrayList<Tag>();
     @XmlElement(name = "status")
-    @ApiModelProperty(value = "pet status in the store", allowableValues = "available,pending,sold")
+    @ApiModelProperty(value = "contact status in the store", allowableValues = "available,pending,sold")
     private String status;
 
     public long getId() {

@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Order {
 
     private long id;
-    private long petId;
+    private long contactId;
     private int quantity;
     private Date shipDate;
     private String status;
@@ -47,13 +47,13 @@ public class Order {
         this.complete = complete;
     }
 
-    @XmlElement(name = "petId")
-    public long getPetId() {
-        return petId;
+    @XmlElement(name = "contactId")
+    public long getContactId() {
+        return contactId;
     }
 
-    public void setPetId(long petId) {
-        this.petId = petId;
+    public void setContactId(long contactId) {
+        this.contactId = contactId;
     }
 
     @XmlElement(name = "quantity")
