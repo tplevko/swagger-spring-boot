@@ -26,7 +26,7 @@ public class ContactGetJson {
         @ApiResponse(code = 400, message = "Invalid contact data supplied"),
         @ApiResponse(code = 404, message = "Contact not created")
     })
-    @ApiOperation(notes = "Gets contact by id in JSON", value = "Get contact by ID in JSON", nickname = "getContact",
+    @ApiOperation(notes = "Gets contact by id in JSON", value = "Get contact by ID in JSON", nickname = "getContactJson",
         tags = {"Contact"})
     @GetMapping(value = "/contact/{contactId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Contact> getContactById(@ApiParam(value = "ID of contact that needs to be fetched", required = true)

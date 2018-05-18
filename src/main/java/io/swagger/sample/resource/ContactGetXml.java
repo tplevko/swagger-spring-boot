@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.sample.data.ContactData;
 import io.swagger.sample.exception.NotFoundException;
 import io.swagger.sample.models.Contact;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class ContactGetXml {
         @ApiResponse(code = 400, message = "Invalid contact data supplied"),
         @ApiResponse(code = 404, message = "Contact not created")
     })
-    @ApiOperation(notes = "Gets contact by id in XML format", value = "Get contact by ID in XML", nickname = "getContact",
+    @ApiOperation(notes = "Gets contact by id in XML format", value = "Get contact by ID in XML", nickname = "getContactXml",
         tags = {"Contact"})
     @GetMapping(value = "/contact/{contactId}", produces = {MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Contact> getContactById(@ApiParam(value = "ID of contact that needs to be fetched", required = true)
@@ -41,23 +42,23 @@ public class ContactGetXml {
             throw new NotFoundException(io.swagger.sample.models.ApiResponse.ERROR, "Contact " + contactId + " not found");
         }
     }
-//
-//    @ApiResponses({
-//        @ApiResponse(code = 200, message = "Nice!"),
-//        @ApiResponse(code = 400, message = "Invalid contact data supplied"),
-//        @ApiResponse(code = 404, message = "Contact not created")
-//    })
-//    @ApiOperation(notes = "Gets all contacts in XML format", value = "Get all contacts in XML", nickname = "listAll",
-//        tags = {"Contact"})
-//    @GetMapping(value = "/listAll", produces = {MediaType.APPLICATION_XML_VALUE})
-//    public List<Contact> getContactById() {
-//        List<Contact> contacts = ContactData.getAllContacts();
-//        log.info("**** All contact ****");
-//        for (Contact p : contacts) {
-//            log.info("contact name: {}", p.getName());
-//            log.info("contact id: {}", p.getId());
-//            log.info("*************");
-//        }
-//        return contacts;
-//    }
+
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "Nice!"),
+        @ApiResponse(code = 400, message = "Invalid contact data supplied"),
+        @ApiResponse(code = 404, message = "Contact not created")
+    })
+    @ApiOperation(notes = "Gets all contacts in XML format", value = "Get all contacts in XML", nickname = "listAll",
+        tags = {"Contact"})
+    @GetMapping(value = "/listAll", produces = {MediaType.APPLICATION_XML_VALUE})
+    public List<Contact> getContactById() {
+        List<Contact> contacts = ContactData.getAllContacts();
+        log.info("**** All contact ****");
+        for (Contact p : contacts) {
+            log.info("contact name: {}", p.getName());
+            log.info("contact id: {}", p.getId());
+            log.info("*************");
+        }
+        return contacts;
+    }
 }
