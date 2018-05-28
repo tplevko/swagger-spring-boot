@@ -25,7 +25,7 @@ public class ContactPostXmlJson {
         @ApiResponse(code = 404, message = "Contact not created")
     })
     @PostMapping(value = "/newContact", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(notes = "Create a new contact, returns it's ID", value = "Create a new contact using XML, return Json", nickname = "createNewContact")
+    @ApiOperation(notes = "Create a new contact, returns contact Json", value = "Create a new contact using XML, return Json", nickname = "createNewContact")
     public ResponseEntity<Contact> newContactNoResponse(@ApiParam(value = "Contact which should be created", required = true)
         @RequestBody(required = true) io.swagger.sample.models.Contact contact) {
         Contact newContact = ContactData.addContact(contact);
