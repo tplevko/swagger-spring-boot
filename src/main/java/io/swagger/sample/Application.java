@@ -5,10 +5,11 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.base.Predicates;
+import static com.google.common.collect.Sets.newHashSet;
 import io.swagger.sample.resource.ContactGetJson;
 import io.swagger.sample.resource.ContactGetXml;
 import io.swagger.sample.resource.ContactPostJson;
-import io.swagger.sample.resource.ContactPostXml;
+import io.swagger.sample.resource.ContactPostXmlJson;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -22,13 +23,14 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import static com.google.common.collect.Sets.newHashSet;
 
 @SpringBootApplication
 @EnableSwagger2
 @ComponentScan(basePackageClasses = {
     ContactGetXml.class,
     ContactGetJson.class,
-    ContactPostXml.class,
+    ContactPostXmlJson.class,
     ContactPostJson.class,
 //    CustomWebTraceFilter.class,
 //    LoggingTraceRepository.class
@@ -41,7 +43,7 @@ public class Application {
 
     @Bean
     public Docket swaggerSpringMvcPlugin() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_2).protocols(newHashSet("http", "https"))
             .useDefaultResponseMessages(false)
             .apiInfo(apiInfo())
             .select()
