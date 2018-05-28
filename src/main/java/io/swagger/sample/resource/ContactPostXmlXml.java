@@ -29,13 +29,13 @@ public class ContactPostXmlXml {
         @ApiResponse(code = 404, message = "Contact not created")
     })
     @PostMapping(value = "/newContact", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    @ApiOperation(notes = "Create a new contact, returns it's ID", value = "Create a new contact using XML", nickname = "createNewContact")
+    @ApiOperation(notes = "Create a new contact, returns it's ID", value = "Create a new contact using XML, return XML", nickname = "createNewContact")
     public ResponseEntity<Contact> newContactNoResponse(@ApiParam(value = "Contact which should be created", required = true)
         @RequestBody(required = true) io.swagger.sample.models.Contact contact) {
         Contact newContact = ContactData.addContact(contact);
         log.info("**** new contact ****");
-        log.info("contact name: {}", contact.getName());
-        log.info("contact id: {}", contact.getId());
+        log.info("contact name: {}", newContact.getName());
+        log.info("contact id: {}", newContact.getId());
         log.info("******************");
         return ResponseEntity.ok().body(newContact);
     }

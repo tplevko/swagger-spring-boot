@@ -25,7 +25,7 @@ public class ContactPostJson {
         @ApiResponse(code = 404, message = "Contact not created")
     })
     @PostMapping(value = "/newContact", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(notes = "Create a new contact, nothing returned", value = "Create a new contact using JSON, no return value", nickname = "createNewContact")
+    @ApiOperation(notes = "Create a new contact, return Contact", value = "Create a new contact using JSON, return Contact", nickname = "createNewContact")
     public ResponseEntity<Contact> newContactNoResponse(@ApiParam(value = "Contact which should be created", required = true)
         @RequestBody(required = true) io.swagger.sample.models.Contact body) {
         Contact newContact = ContactData.addContact(body);
